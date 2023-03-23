@@ -1,0 +1,19 @@
+/* Write your CSS here */
+.list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid #7e858e;
+  min-width: 450px;
+  text-align: center;
+  margin-top: 0px;
+}
+.deleteButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.deleteImg {
+  height: 24px;
+}

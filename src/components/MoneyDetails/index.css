@@ -1,0 +1,33 @@
+/* Write your CSS here */
+
+.MoneyDetails {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  list-style-type: none;
+  padding: 0px;
+}
+.detailsBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.green {
+  border: 1px solid #84cc16;
+  border-radius: 8px;
+  background-color: #ecfccb;
+}
+.purple {
+  border: 1px solid #7c3aed;
+  border-radius: 8px;
+  background-color: #ede9fe;
+}
+.blue {
+  border: 1px solid #06b6d4;
+  border-radius: 8px;
+  background-color: #cffafe;
+}
