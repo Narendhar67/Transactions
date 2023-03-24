@@ -37,7 +37,8 @@ class MoneyManager extends Component {
   }
 
   updateType = event => {
-    this.setState({type: event.target.value})
+    const TYPE = event.target.value === 'INCOME' ? 'Income' : 'Expenses'
+    this.setState({type: TYPE})
   }
 
   onClickDelete = async id => {
@@ -62,7 +63,12 @@ class MoneyManager extends Component {
   submitDetails = event => {
     event.preventDefault()
     const {title, amount, type} = this.state
-    const Amount = parseInt(amount)
+    let Amount
+    if (amount !== '') {
+      Amount = parseInt(amount)
+    } else {
+      Amount = 0
+    }
 
     this.setState(prevState => ({
       history: [...prevState.history, {id: uuidv4(), title, Amount, type}],
@@ -113,7 +119,7 @@ class MoneyManager extends Component {
               <label htmlFor="type">TYPE</label>
               <select id="type" onChange={this.updateType}>
                 {transactionTypeOptions.map(each => (
-                  <option value={each.displayText} key={each.optionId}>
+                  <option value={each.optionId} key={each.optionId}>
                     {each.displayText}
                   </option>
                 ))}
