@@ -46,13 +46,13 @@ class MoneyManager extends Component {
 
     const item = history.filter(each => each.id === id)
 
-    if (item.type === 'Income') {
+    if (item[0].type === 'Income') {
       await this.setState(prevState => ({
-        income: prevState.income - item[0].Amount,
+        income: prevState.income - item[0].amount,
       }))
     } else {
       await this.setState(prevState => ({
-        expenses: prevState.expenses - item[0].Amount,
+        expenses: prevState.expenses - item[0].amount,
       }))
     }
 
@@ -71,7 +71,10 @@ class MoneyManager extends Component {
     }
 
     this.setState(prevState => ({
-      history: [...prevState.history, {id: uuidv4(), title, Amount, type}],
+      history: [
+        ...prevState.history,
+        {id: uuidv4(), title, amount: Amount, type},
+      ],
       income: type === 'Income' ? prevState.income + Amount : prevState.income,
       expenses:
         type === 'Expenses' ? prevState.expenses + Amount : prevState.expenses,
@@ -131,13 +134,14 @@ class MoneyManager extends Component {
           </form>
           <div className="historyBox">
             <h1 className="formHeading">history</h1>
-            <div className="historyTable">
-              <p>Title</p>
-              <p>Amount</p>
-              <p>Type</p>
-              <p> </p>
-            </div>
+
             <ul className="historyList">
+              <li className="historyTable">
+                <p>Title</p>
+                <p>Amount</p>
+                <p>Type</p>
+                <p> </p>
+              </li>
               {history.map(each => (
                 <TransactionItem
                   onClickDelete={this.onClickDelete}
